@@ -3,11 +3,14 @@ import { Feather as Icon } from "@expo/vector-icons";
 import { View, Image, Text, ImageBackground } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-
+import RNPickerSelect from "react-native-picker-select";
 import styles from "./styles";
+// hooks
+import { ufsHook } from "./../../hooks/cities-ufs";
 
 const Home = () => {
   const navigation = useNavigation();
+  const ufs = ufsHook();
 
   const handleNavigateToPoints = () => {
     navigation.navigate("Points");
@@ -28,6 +31,13 @@ const Home = () => {
       </View>
 
       <View style={styles.footer}>
+        <RNPickerSelect
+          onValueChange={() => {}}
+          items={ufs.map((uf) => {
+            return { label: uf, value: uf };
+          }, [])}
+        />
+
         <RectButton style={styles.button} onPress={handleNavigateToPoints}>
           <View style={styles.buttonIcon}>
             <Text>
