@@ -23,6 +23,10 @@ const locationHook = () => {
       const location = await Location.getCurrentPositionAsync();
 
       const { latitude, longitude } = location.coords;
+
+      console.log(latitude, longitude);
+
+      setInitialPosition([latitude, longitude]);
     };
 
     loadPosition();
